@@ -17,7 +17,6 @@ class Calculator{
     appendNumber(number) {
         if (number === '.' && this.currentOperand.includes('.')) return
         this.currentOperand = this.currentOperand.toString() + number.toString()
-
     }
 
     chooseOperation(operation) {
@@ -34,7 +33,6 @@ class Calculator{
         const current = parseFloat(this.currentOperand);
 
         if (isNaN(prev) || isNaN(current)) return;
-        this.cachedOperand = this.currentOperand
         switch (this.operation){
             case '+': 
                 computation = prev + current;
@@ -55,7 +53,6 @@ class Calculator{
         this.operation = undefined
         this.previousOperand = ''
     }
-    
     getDisplayNumber(number) {
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0])
@@ -123,7 +120,7 @@ allClearButton.addEventListener('click', button => {
 })
 
 equalsButton.addEventListener('click', button => {
-	calculator.delete();
+	calculator.compute();
 	calculator.updateDisplay();
 })
 
